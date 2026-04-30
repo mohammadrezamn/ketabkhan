@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ketabkhan | پروکسی هوشمند</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 2rem;
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+      background: linear-gradient(to left, #22d3ee, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 2rem 0;
+      font-size: 1.3rem;
+    }
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 12px #10b981;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+    }
+    p { opacity: 0.8; line-height: 1.8; }
+    code {
+      background: rgba(255,255,255,0.1);
+      padding: 0.2em 0.5em;
+      border-radius: 0.3em;
+      font-size: 0.9em;
+      direction: ltr;
+      display: inline-block;
+    }
+    .footer {
+      margin-top: 2.5rem;
+      font-size: 0.85rem;
+      opacity: 0.6;
+    }
+    a { color: #818cf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>⚡ Ketabkhan</h1>
+    <div class="status">
+      <span class="dot"></span>
+      <span>سرویس فعال است</span>
+    </div>
+    <p>
+      🛰️ تونل ارتباطی به آدرس مقصد <code id="targetDisplay">---</code><br>
+      مسیر پراکسی: <code>/relay/...</code> (مثلاً <code>/relay/api/v1</code>)
+    </p>
+    <p class="footer">
+      قدرت گرفته از <a href="https://vercel.com" target="_blank">Vercel Edge</a>
+    </p>
+  </div>
+
+  <script>
+    // می‌تونی با یه fetch توی /relay/health-check (اگه مقصد داری) وضعیت واقعی بگیری
+    // فعلاً فقط یه نمایش ساده
+    try {
+      const target = "<?= process.env.TARGET_DOMAIN ?? 'تنظیم نشده' ?>";
+      document.getElementById('targetDisplay').textContent = target;
+    } catch (e) {
+      document.getElementById('targetDisplay').textContent = 'بعد از دیپلوی مقدار دهی می‌شود';
+    }
+  </script>
+</body>
+</html>
