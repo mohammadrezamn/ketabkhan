@@ -1,0 +1,7 @@
+{
+  "name": "ketabkhan",
+  "version": "2.0.0",
+  "description": "Relay proxy + simple site on Vercel",
+  "private": true,
+  "license": "MIT"
+}
