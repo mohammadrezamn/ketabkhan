@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "ketabkhan",
+  "rewrites": [
+    { "source": "/relay(.*)", "destination": "/api/relay" }
+  ],
+  "trailingSlash": false
+}
